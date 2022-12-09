@@ -6,7 +6,10 @@ let solicitudes=[
   identidad: "0301-2001-00216",
   correo: "hectorvarela012@gmail.com",
   fecha: "8/12/2022",
-  estado: "pendiente"
+  estado: "pendiente",
+  pedidos: [
+    
+  ]
 },
 {
   _id: 5696,
@@ -15,7 +18,12 @@ let solicitudes=[
   identidad: "0301-2001-00218",
   correo: "hectorvarela013@gmail.com",
   fecha: "8/11/2022",
-  estado: "pendiente"
+  estado: "aprobado",
+  pedidos: [
+    1,
+    2,
+    3
+  ]
 }
 ];
 
@@ -111,13 +119,13 @@ function llenarsolicitudaprobar(){
 
 function llenarsolicitudes(){
   $.each(solicitudes, function (i, item) {
-    if(item.estado=="pendiente"){
+    if(item.estado=="aprobado"){
       var td=`
     <tr>
     <td>${item._id}</td>
     <td>${item.nombre}</td>
     <td>${item.identidad}</td>
-    <td>${item.correo}</td>
+    <td>${item.pedidos.length}</td>
     <td>${item.fecha}</td>
     <td><span class="badge bg-success hov" data-bs-toggle="modal" data-bs-target="#modalsolicitudes" onclick="llenarsolicitudaprobar()">Aprobar</span>
       <span class="badge bg-danger hov" data-bs-toggle="modal" data-bs-target="#modalsolicitudes" onclick="llenarsolicituddenegar()">Denegar</span></td>

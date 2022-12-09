@@ -34,12 +34,76 @@ let usuarios = {
 
 };
 
+let pedidos=[
+  {
+  id:1,
+  id_cliente: 1,
+  monto: 250
+},
+{
+  id:2,
+  id_cliente: 1,
+  monto: 500
+}
+];
+
+let productos=[
+  {
+  id:1,
+  id_cliente: 1,
+  monto: 250
+},
+{
+  id:2,
+  id_cliente: 1,
+  monto: 500
+}
+];
+
+let clientes=[
+  {
+  id:1,
+  id_cliente: 1,
+  monto: 250
+},
+{
+  id:2,
+  id_cliente: 1,
+  monto: 500
+}
+];
+
 let btnsol=$('#boton-solicitud');
 let bodysol=$('#body-solicitud');
 let tablasoli=$('#tabla-solicitudes');
 let modalsoli=$('#modalsolicitudes');
+let totventas=gid('totventas');
+let ventas=gid('ventas');
+let productosdiv=gid('productos');
+let clientesdiv=gid('clientes');
+function cargar(){
+  let totalventas=0;
+  let totalproductos=0;
+  $.each(pedidos, function (i, item) {
+    totalventas+=item.monto;
+    
+  });
+  
+
+  totventas.innerHTML=`$ ${totalventas}`;
+  ventas.innerHTML=`$ ${totalventas}`;
+  productosdiv.innerHTML=productos.length;
+  clientesdiv.innerHTML=clientes.length;
+
+}
 
 
+
+
+function gid(id){
+  let elemento=document.getElementById(`${id}`);
+  return elemento;
+}
 
 function toastt(mensaje){
   const toastTrigger = document.getElementById('liveToastBtn')
@@ -62,8 +126,7 @@ let alertas={
 }
 
 /*function $(ID) {
-  let elemento=document.getElementById(`${ID}`);
-  return elemento;
+  
 }*/
 
 function vaciarmodal(){

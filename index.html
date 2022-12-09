@@ -1,107 +1,287 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>App Admin / Panel de Control</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" href="libs/bootstrap-5.2.2-dist/css/bootstrap.min.css">
-
-    <title>Boxx</title>
-</head>
-<body>
-    <!-- Barra de navegacion -->
-    <nav style="border-bottom: solid 2px black;">
-         <!-- container que contiene las 3 columnas en la que se divide la navbar, dentro de la misma estan
-        3 botones y un logo -->
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <!-- boton de menu -->
-                    <button class="butt"  onclick="openNav()" ><i class="fa-solid fa-bars ico"></i></button>
-                </div>
-                <div class="col">
-                    <!-- Logo Principal -->
-                    <img class="logo" src="img/Logo.png" alt="">
-                </div>
-                <div class="col">
-                    <!--Div contenedor que contiene 3 divs con un boton de busqueda y un boton de una shopping
-                    bag que fueron arreglados en columnas utilizando Flexbox -->
-                    <div class="cont">
-                        <div>
-                            <button class="butt"><i class="fa-solid fa-magnifying-glass ico cont"></i></button>
-                        </div>
-                        <div>
-                            <button class="butt"><i class="fa-solid fa-bag-shopping ico"></i></button>
-                        </div>
-                        <div>
-                            <button class="butt"><i class="fa-solid fa-user ico" onclick="change2Login() "></i></button>
-                        </div>
-                    </div>    
-                </div>
-            </div>
+    <link rel="stylesheet" type="text/css" href="css/Admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+  </head>
+  <body style="background-color:#F4F5FA" onload="cargar()">
+    <header class="navbar navbar-dark bg-light sticky-top flex-md-nowrap p-0 shadow" style="background-color: white;">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 " href="index.html">
+        <img src="img/Logo.png" class=" rounded mx-auto d-block" alt="..." height="25px" width="auto" href="#">
+      </a>
+      
+      <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Buscar" aria-label="Search">
+      <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+          <a class="nav-link px-3 text-dark border hov" href="#">Cerrar Sesión</a>
         </div>
-    </nav>
-    
-    <!-- Contenido de la pagina-->
-    <div>
-        <!--Contenido principal (novedades) -->
-        <div class="nov">
+      </div>
+    </header>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block ps-0 sidebar collapse">
+        
+        <div class="position-sticky pt-3 sidebar-sticky  pe-2" >
+          <ul class="nav flex-column ">
+            <li class="nav-item rounded-pill rounded-start  bg-info shadow mb-3">
+              <a class="nav-link active text-light hov " aria-current="page" href="#">
+                <span data-feather="home" class="align-text-bottom text-light"></span>
+                <i class="fa-solid fa-sheet-plastic"></i>
+                Dashboard
+                
+              </a>
+            </li>
             
+            <li class="nav-item rounded-pill rounded-start    mb-3">
+              <a class="nav-link text-dark hov" href="solicitudes.html">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Solicitudes
+                
+              </a>
+            </li>
+            <li class="nav-item rounded-pill rounded-start    mb-3">
+              <a class="nav-link text-dark hov" href="repartidores.html">
+                <span data-feather="layers" class="align-text-bottom"></span>
+                
+                <i class="fa-solid fa-motorcycle"></i>
+                Repartidores
+                
+              </a>
+            </li>
+            <li class="nav-item rounded-pill rounded-start    mb-3">
+              <a class="nav-link text-dark hov" href="#">
+                <span data-feather="users" class="align-text-bottom"></span>
+                Clientes
+                <i class="fa-solid fa-users"></i>
+              </a>
+            </li>
+            <li class="nav-item text-dark rounded-pill rounded-start    mb-3">
+              <a class="nav-link text-dark hov" href="#">
+                <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                Reportes
+                <i class="fa-solid fa-chart-simple"></i>
+              </a>
+            </li>
+            
+          </ul>
+          <!-- 
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+            <span>Saved reports</span>
+            <a class="link-secondary" href="#" aria-label="Add a new report">
+              <span data-feather="plus-circle" class="align-text-bottom"></span>
+            </a>
+          </h6>-->
+          <!--
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text" class="align-text-bottom"></span>
+                Current month
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text" class="align-text-bottom"></span>
+                Last quarter
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text" class="align-text-bottom"></span>
+                Social engagement
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text" class="align-text-bottom"></span>
+                Year-end sale
+              </a>
+            </li>
+          </ul>-->
         </div>
-        
-        <!-- Container que contendra las categorias de la landing page-->
-        <div class="princi">
-            <h3> Ofertas</h3>
-            <div class="contProd">
-                <div class="cubProd">
-
+      </nav>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="container pt-3">
+          <div class="row">
+            <div class="col-4">
+              <div class="card border-0">
+                <div class="modal-header ms-3 mt-3 me-3">
+                  <h1 class="modal-title fs-5 ms-1" id="exampleModalLabel">Felicidades Hector</h1>
+                  <button type="button" class="btn fs-5" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                  
                 </div>
-                <div class="cubProd">
-
+                <div class="card-body shadow-sm border-0">
+                  <h6 class="card-subtitle mb-2 text-muted text-start ms-1">Estas es el total de ventas</h6>
+                  <p class="fs-3 fw-semibold text-info" id="totventas">$ 42.8k</p>
+                  <button type="button" class="btn btn-info text-light">Ver Ventas</button>
                 </div>
-                <div class="cubProd">
-
-                </div>
+              </div>
             </div>
-            <h3> Recien llegados!</h3>
-            <div class="contProd">
-                <div class="cubProd">
-
+            <div class="col-8">
+              <div class="card border-0">
+                <div class="modal-header ms-3 mt-3 me-3">
+                  <h1 class="modal-title fs-5 ms-1" id="exampleModalLabel">Estadisticas</h1>
+                  <button type="button" class="btn fs-5" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                  
                 </div>
-                <div class="cubProd">
-
+                <div class="card-body shadow-sm border-0">
+                  <h6 class="card-subtitle mb-2 text-muted text-start ms-1 pb-3">Crecimiento del 5% este mes</h6>
+                  <div class="container text-center pt-2 pb-3">
+                    <div class="row">
+                      <div class="col ">
+                        <div class="container text-start">
+                          <div class="row">
+                            <div class="col-4">
+                              <i class="fa-solid fa-cart-shopping bg-info text-light p-3 fs-5 rounded shadow-sm border"></i>  
+                            </div>
+                            <div class="col-8">
+                              <div class="row ">
+                                <div class="col">
+                                  Ventas
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col fs-5" id="ventas">
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="text-start">
+                        
+                        </div>
+                      </div>
+                      <div class="col ">
+                        <div class="container text-start">
+                          <div class="row">
+                            <div class="col col-4">
+                              <i class="fa-solid fa-tag bg-warning text-light p-3 fs-5 rounded shadow-sm"></i>  
+                            </div>
+                            <div class="col col-8">
+                              <div class="row">
+                                <div class="col">
+                                  Productos
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col fs-5" id="productos">
+                                  200
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="text-start">
+                        
+                        </div>
+                      </div>
+                      <div class="col ">
+                        <div class="container text-start">
+                          <div class="row">
+                            <div class="col col-4">
+                              <i class="fa-solid fa-user bg-success text-light p-3 fs-5 rounded shadow-sm"></i>  
+                            </div>
+                            <div class="col col-8">
+                              <div class="row">
+                                <div class="col">
+                                  Clientes
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col fs-5" id="clientes">
+                                  350
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="text-start">
+                        
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
                 </div>
-                <div class="cubProd">
-
-                </div>
-            </div>          
-        </div>
-        
-        <!-- Side nav menu bar-->
-        <div id="mySideNav" class="sideNav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="About">About</a>
-            <a href="Services">Services</a>
-            <a href="Clients">Clients</a>
-            <a href="Cat4">Cat4</a>
-        
-            <div id="contNav">
-
+              </div>
             </div>
-        
+          </div>
+          <div class="row pt-3">
+            <div class="col-12">
+              <div class="card border-0">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Fecha</th>
+                      <th scope="col">Monto</th>
+                      <th scope="col">Repartidor</th>
+                      <th scope="col">Estado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Jeremy</td>
+                      <td>25/5/2022</td>
+                      <td>$250</td>
+                      <td>Harold</td>
+                      <td><span class="badge bg-success">Entregado</span></td>
+                    </tr>
+                    <tr>
+                      <td>Jeremy</td>
+                      <td>25/5/2022</td>
+                      <td>$250</td>
+                      <td>Harold</td>
+                      <td><span class="badge bg-warning" >Pendiente</span></td>
+                    </tr>
+                    <tr>
+                      <td>Jeremy</td>
+                      <td>25/5/2022</td>
+                      <td>$250</td>
+                      <td>Harold</td>
+                      <td><span class="badge bg-success">Entregado</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+          </div>
         </div>
+      </main>
     </div>
-    
-    <!-- Pie de pagina-->
-    <footer>
-        <div class="foot"></div>
-    </footer>
+  </div>
+        
+
+        
+
+  <script src="libs/bootstrap-5.2.2-dist/js/bootstrap.min.js"></script>
 
 
-    <script src="js/index.js"></script>
-    <script src="libs/bootstrap-5.2.2-dist/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/12c21b7c23.js" crossorigin="anonymous"></script>
-</body>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+
+  <script src="https://kit.fontawesome.com/12c21b7c23.js" crossorigin="anonymous"></script>
+
+
+  <script src="js/index.js"></script>
+
+  <script src="js/controlador-index.js"></script>
+      
+  </body>
 </html>

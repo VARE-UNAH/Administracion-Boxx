@@ -19,6 +19,7 @@ body{
 .hov:hover{
     opacity: 0.85;
     transform: scale(1.015);
+    cursor: pointer;
 }
 /* Iconos ( menus, shopping bag, etc.*/
 .ico{
