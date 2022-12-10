@@ -32,26 +32,24 @@
           <div class="col">
           </div>
           <div class="col-10 pt-3">
-            <form>
-              <form action="admin/authenticate" method="post">
-                <div class="mb-3">
-                  <label for="uname" class="form-label">Correo</label>
-                  <input type="email" name="uname" class="form-control" id="email" aria-describedby="emailHelp">
-                  <div id="emailHelp"  class="form-text">Nunca compartiremos tu contraseña con nadie mas.</div>
-                </div>
-                <div class="mb-3">
-                  <label for="psw" class="form-label">Contraseña</label>
-                  <input type="password" name="psw" class="form-control" id="password">
-                </div>
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input bg-dark" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Mantener Sesión</label>
-                </div>
-                <button class="btn btn-dark rounded-pill" type="submit">Iniciar Sesión</button>
-                <div class="alert alert-danger mt-3" role="alert" id="alerta-login" style="display:none">
-                </div>
-              </form>
-            </div>
+            <form action="Admin/authenticate" method="post">
+              <div class="mb-3">
+                <label for="uname" class="form-label">Correo</label>
+                <input type="email" name="uname" class="form-control" id="email" aria-describedby="emailHelp">
+                <div id="emailHelp"  class="form-text">Nunca compartiremos tu contraseña con nadie mas.</div>
+              </div>
+              <div class="mb-3">
+                <label for="psw" class="form-label">Contraseña</label>
+                <input type="password" name="psw" class="form-control" id="password">
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input bg-dark" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Mantener Sesión</label>
+              </div>
+              <button class="btn btn-dark rounded-pill" type="submit">Iniciar Sesión</button>
+              <div class="alert alert-danger mt-3" role="alert" id="alerta-login" style="display:none">
+              </div>
+            </form>
           </div>
           <div class="col">
             
